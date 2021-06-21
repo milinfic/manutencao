@@ -1,5 +1,5 @@
 # manutencao
-POO - Trabalho de conclusão da em Java e BD MySQL
+POO - Trabalho de conclusão em Java e BD MySQL
 POO Java, trabalho de conclusão da matéria POO da Fatec.
 
 Trabalho final da matéria.
