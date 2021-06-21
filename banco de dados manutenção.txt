@@ -1,0 +1,81 @@
+create database manutencao;
+
+use manutencao;
+
+create table clientes (
+idcliente integer primary key auto_increment,
+nome varchar(100) not null,
+telefone varchar(14),
+celular varchar(14),
+cpf varchar(20) not null,
+rg varchar(20),
+datanascimento varchar(10),
+email varchar(100),
+sexo char,
+endereco varchar(200)
+);
+
+create table equipamentos(
+idequipamento integer primary key auto_increment,
+tipo varchar(45) not null,
+marca varchar(60) not null,
+modelo varchar(80) not null,
+identificacao varchar(100) not null
+);
+
+create table fornecedores(
+idfornecedor integer primary key auto_increment,
+nome varchar(45),
+endereco varchar(100),
+cnpj varchar(45),
+telefone varchar(45)
+);
+
+create table produto(
+idproduto integer primary key auto_increment,
+idfornecedor integer not null,
+datacompra varchar(12),
+tipo varchar(45),
+marca varchar(60),
+modelo varchar(80),
+descricao varchar(250),
+quantidade int,
+valor decimal(10,2),
+FOREIGN KEY (idfornecedor) REFERENCES fornecedores(idfornecedor)
+);
+
+create table servicos(
+idservico integer primary key auto_increment,
+idequipamento integer not null,
+idcliente  integer not null,
+dataentrada varchar(15),
+datasaida varchar(15),
+totalservico decimal(10,2),
+valornota decimal(10,2),
+descricao varchar(200),
+situacao enum('0','1','2','3','4','5','6') not null,
+FOREIGN KEY (idequipamento) REFERENCES equipamentos (idequipamento),
+FOREIGN KEY (idcliente) REFERENCES clientes (idcliente) 
+);
+
+create table servicodetalhado(
+idservicodetalhado integer primary key auto_increment,
+idservico integer not null,
+idproduto integer,
+valortotal decimal(10,2),
+descricao varchar(150),
+quantidade int,
+FOREIGN KEY (idservico) REFERENCES servicos (idservico),
+FOREIGN KEY (idproduto) REFERENCES produto (idproduto) 
+);
+
+insert into fornecedores(nome)
+values ("manutencao");
+
+
+insert into produto (idfornecedor,datacompra,tipo,
+marca,modelo,descricao,quantidade,valor)
+values (1,"","","","","manutencão",1,0);
+
+
+
