@@ -18,8 +18,8 @@ public class conexao {
 
     static String host = "localhost"; // local onde ele vai conectar, onde está o bd - servidor
     static String database = "manutencao"; // base de dados
-    static String usuario = "root";
-    static String senha = "pcpa1343";
+    static String usuario = "user";
+    static String senha = "senha";
     static String url = "jdbc:mysql://" + host + "/" + database;
     
     
